@@ -70,8 +70,7 @@ x2, y2 = zip(*BLC_data)
 x3, y3 = zip(*PHILTER_data)
 
 # Setting plot's parameters
-font = {'weight' : 'bold',
-        'size'   : 22}
+font = {'size'   : 15}
 
 plt.rc('font', **font)
 
