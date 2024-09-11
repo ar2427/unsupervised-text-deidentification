@@ -68,7 +68,7 @@ x2, y2 = zip(*BiLSTM_CRF_data)
 x3, y3 = zip(*PHILTER_data)
 
 # Setting plot's parameters
-font = {'size'   : 15}
+font = {'size'   : 12}
 plt.rc('font', **font)
 
 # Plotting the data
