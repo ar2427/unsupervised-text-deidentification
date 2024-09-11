@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 
 # Updated data
-# EHR
+# ClinicalBERT
 ClinicalBERT_data = [
 [0.0, 0.9028], 
 [0.0016, 0.9093], 
@@ -21,7 +21,7 @@ ClinicalBERT_data = [
 [0.2092, 0.0719]
 ]
 
-# Deidentify
+# BiLSTM-CRF
 BiLSTM_CRF_data = [
 [0.0, 0.9028], 
 [0.0148, 0.819], 
@@ -41,6 +41,7 @@ BiLSTM_CRF_data = [
 [0.23, 0.1436]
 ]
 
+# PHILTER
 PHILTER_data = [
 [0.0, 0.9028], 
 [0.0176, 0.8522], 
@@ -68,7 +69,6 @@ x3, y3 = zip(*PHILTER_data)
 
 # Setting plot's parameters
 font = {'size'   : 15}
-
 plt.rc('font', **font)
 
 # Plotting the data
@@ -77,12 +77,19 @@ plt.plot(x1, y1, marker='o', label='ClinicalBERT Tool', linestyle='-', color='re
 plt.plot(x2, y2, marker='s', label='BiLSTM-CRF Tool', linestyle='--', color='blue')
 plt.plot(x3, y3, marker='x', label='PHILTER Tool', linestyle=':', color='green')
 
+# Add vertical lines to indicate sections with thicker, more pronounced lines
+plt.axvline(x=0.05, color='black', linestyle='--', linewidth=2, label='Low-Moderate Boundary (5%)')
+plt.axvline(x=0.15, color='black', linestyle='--', linewidth=2, label='Moderate-High Boundary (15%)')
+
 # Adding titles and labels
-plt.title('Comparative Graph of ClinicalBERT Tool, BiLSTM-CRF Tool and PHILTER Tool')
+plt.title('Comparative Graph of ClinicalBERT Tool, BiLSTM-CRF Tool, and PHILTER Tool')
 plt.xlabel('% Text masked')
 plt.ylabel('Reidentification accuracy %')
+
+# Adding a legend
 plt.legend()
 
-# Display the plot
+# Display the plot with grid
 plt.grid(True)
+plt.show()
 plt.savefig("plot_masking_percentage_vs_val_acc_graph.png")
