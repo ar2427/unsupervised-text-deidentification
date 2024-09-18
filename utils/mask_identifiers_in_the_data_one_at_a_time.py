@@ -102,18 +102,13 @@ def mask_identifier_in_the_data(df, identifier, identifier_type):
     return df
 
 if __name__ == "__main__":
-    #print("THIS FILE OVERWRITES THE GIVEN ORIGINAL FILE, ARE YOU OKAY WITH IT? Type 'Y' or 'N'")
-    #response = input()
-    #if response != 'Y' and response != 'N':
-    #    print("Invalid Input.")
-    #    exit(0)
-    
-    # Configuration variables
+    # Change for your cutom usecase 
     relevant_identifers = {'dates' : ['death_date', ['year_of_birth', 'month_of_birth', 'day_of_birth']],
                      'date_times' : ['note_datetime', 'death_datetime'],
                      'texts' : ["note_type", "note_class", "gender", "race", "ethnicity", 'address_1', 'address_2', 'city', 'state'],
                      'numbers' : ["person_id", "note_id", "empi_id", "mrn", "zip"]
     }
+    # Path of the dataset file, that needs to be masked
     input_filepath = sys.argv[1]
     print("input_filepath : ", input_filepath)
     df = pd.read_csv(input_filepath)
